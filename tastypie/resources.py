@@ -37,6 +37,8 @@ from django.utils.cache import patch_cache_control, patch_vary_headers
 from django.utils.html import escape
 from django.views.decorators.csrf import csrf_exempt
 
+import six
+
 from tastypie.authentication import Authentication
 from tastypie.authorization import ReadOnlyAuthorization
 from tastypie.bundle import Bundle
@@ -1911,7 +1913,7 @@ class BaseModelResource(Resource):
             result = fields.FloatField
         elif internal_type in ('DecimalField',):
             result = fields.DecimalField
-        elif internal_type in ('IntegerField', 'PositiveIntegerField', 'PositiveSmallIntegerField', 'SmallIntegerField', 'AutoField', 'BigIntegerField'):
+        elif internal_type in ('IntegerField', 'PositiveIntegerField', 'PositiveSmallIntegerField', 'SmallIntegerField', 'AutoField', 'BigIntegerField', 'BigAutoField'):
             result = fields.IntegerField
         elif internal_type in ('FileField', 'ImageField'):
             result = fields.FileField
